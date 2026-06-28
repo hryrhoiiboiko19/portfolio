@@ -1,0 +1,96 @@
+---
+interface Props {
+  images: readonly { src: string; alt: string }[];
+  title?: string;
+}
+
+const { images, title } = Astro.props;
+---
+
+<div class="card overflow-hidden !p-0">
+  {
+    title && (
+      <div class="flex items-center justify-between gap-2 border-b p-4" style="border-color: var(--border);">
+        <h3 class="font-semibold">{title}</h3>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            class="btn-ghost btn p-2"
+            aria-label="Previous"
+            data-carousel-prev
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="btn-ghost btn p-2"
+            aria-label="Next"
+            data-carousel-next
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    )
+  }
+  <div
+    class="carousel-strip flex snap-x snap-mandatory overflow-x-auto scroll-smooth gap-3 p-3"
+    data-carousel-strip
+    style="scrollbar-width: thin;"
+  >
+    {
+      images.map((img) => (
+        <figure class="snap-start shrink-0 basis-[82%] sm:basis-[60%] lg:basis-[42%]">
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading="lazy"
+            decoding="async"
+            class="w-full rounded-lg object-cover"
+            style="border: 1px solid var(--border);"
+          />
+          <figcaption class="mt-2 px-1 text-center text-xs text-subtle">
+            {img.alt}
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  function initCarousels() {
+    document
+      .querySelectorAll<HTMLElement>("[data-carousel-strip]")
+      .forEach((strip) => {
+        if (strip.dataset.initialized) return;
+        strip.dataset.initialized = "true";
+        const root = strip.closest(".card, .overflow-hidden") ?? strip;
+        const prev = root.querySelector("[data-carousel-prev]");
+        const next = root.querySelector("[data-carousel-next]");
+        const step = () => Math.max(strip.clientWidth * 0.8, 160);
+        prev?.addEventListener("click", () =>
+          strip.scrollBy({ left: -step(), behavior: "smooth" })
+        );
+        next?.addEventListener("click", () =>
+          strip.scrollBy({ left: step(), behavior: "smooth" })
+        );
+      });
+  }
+  initCarousels();
+  document.addEventListener("astro:page-load", initCarousels);
+</script>
+
+<style>
+  .carousel-strip::-webkit-scrollbar {
+    height: 8px;
+  }
+  .carousel-strip::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+  }
+</style>

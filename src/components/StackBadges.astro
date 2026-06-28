@@ -1,0 +1,13 @@
+---
+interface Props {
+  items: readonly string[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+const cls = `flex flex-wrap gap-2 ${className ?? ""}`;
+---
+
+<ul class={cls}>
+  {items.map((item) => <li class="badge">{item}</li>)}
+</ul>

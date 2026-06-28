@@ -1,0 +1,62 @@
+---
+import "@styles/global.css";
+import SEO from "@components/SEO.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import { useTranslations, type Locale } from "@i18n/index";
+
+interface Props {
+  locale: Locale;
+  path: string;
+  title?: string;
+  description?: string;
+}
+
+const { locale, path, title, description } = Astro.props;
+const t = useTranslations(locale);
+const pageTitle = title ?? t.meta.siteTitle;
+const pageDescription = description ?? t.meta.siteDescription;
+const currentPath = `/${locale}${path === "/" ? "" : path}`.replace(/\/+$/g, "") || `/${locale}`;
+---
+
+<!doctype html>
+<html lang={locale} data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <script is:inline>
+      (function () {
+        try {
+          var key = "theme";
+          var saved = localStorage.getItem(key);
+          var theme =
+            saved ||
+            (window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch {
+          void 0;
+        }
+      })();
+    </script>
+
+    <SEO
+      title={pageTitle}
+      description={pageDescription}
+      locale={locale}
+      path={path}
+    />
+  </head>
+  <body>
+    <Header locale={locale} currentPath={currentPath} />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

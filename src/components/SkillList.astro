@@ -1,0 +1,26 @@
+---
+import Card from "@components/Card.astro";
+
+interface Props {
+  groups: { title: string; items: readonly string[] }[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+  {
+    groups.map((g) => (
+      <Card>
+        <h3 class="mb-3 font-mono text-sm uppercase tracking-wide text-subtle">
+          {g.title}
+        </h3>
+        <ul class="flex flex-wrap gap-2">
+          {g.items.map((i) => (
+            <li class="badge">{i}</li>
+          ))}
+        </ul>
+      </Card>
+    ))
+  }
+</div>

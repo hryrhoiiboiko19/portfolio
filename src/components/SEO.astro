@@ -1,0 +1,27 @@
+---
+import type { Locale } from "@i18n/index";
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  path: string;
+}
+
+const { title, description, locale, path } = Astro.props;
+
+const canonical = `/${locale}${path === "/" ? "" : path}`.replace(/\/$/, "") || `/${locale}`;
+const alternates = [
+  { hreflang: "uk", href: `/uk${path === "/" ? "" : path}`.replace(/\/+$/g, "") || "/uk" },
+  { hreflang: "en", href: `/en${path === "/" ? "" : path}`.replace(/\/+$/g, "") || "/en" },
+];
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{
+  alternates.map((a) => (
+    <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+  ))
+}

@@ -1,0 +1,98 @@
+---
+import { useTranslations, type Locale } from "@i18n/index";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<button
+  type="button"
+  class="btn-ghost btn p-2"
+  aria-label={t.theme.toggle}
+  title={t.theme.toggle}
+  data-theme-toggle
+>
+  <svg
+    class="h-5 w-5 theme-icon-light"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4" />
+    <path
+      stroke-linecap="round"
+      d="M12 2v2m0 16v2M2 12h2m16 0h2m-2.93-6.07l-1.42 1.42M6.34 17.66l-1.42 1.42m0-13.16l1.42 1.42m11.32 11.32l1.42 1.42"
+    />
+  </svg>
+  <svg
+    class="h-5 w-5 theme-icon-dark hidden"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"
+    />
+  </svg>
+</button>
+
+<script is:inline>
+  (function () {
+    const KEY = "theme";
+    function apply(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      const light = document.querySelector(".theme-icon-light");
+      const dark = document.querySelector(".theme-icon-dark");
+      if (light && dark) {
+        if (theme === "dark") {
+          light.classList.add("hidden");
+          dark.classList.remove("hidden");
+        } else {
+          light.classList.remove("hidden");
+          dark.classList.add("hidden");
+        }
+      }
+    }
+    function init() {
+      const saved = localStorage.getItem(KEY);
+      const theme =
+        saved ||
+        (window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      apply(theme);
+    }
+    init();
+    document.addEventListener("click", function (e) {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+      const btn = target.closest("[data-theme-toggle]");
+      if (!btn) return;
+      const current =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+      const next = current === "dark" ? "light" : "dark";
+      localStorage.setItem(KEY, next);
+      apply(next);
+    });
+  })();
+</script>
+
+<style>
+  .theme-icon-light,
+  .theme-icon-dark {
+    flex-shrink: 0;
+  }
+</style>

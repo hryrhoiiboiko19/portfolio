@@ -1,0 +1,42 @@
+---
+import Nav from "@components/Nav.astro";
+import ThemeToggle from "@components/ThemeToggle.astro";
+import LangSwitcher from "@components/LangSwitcher.astro";
+import { useTranslations, type Locale } from "@i18n/index";
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const t = useTranslations(locale);
+const langPath = currentPath.replace(`/${locale}`, "") || "";
+---
+
+<header
+  class="sticky top-0 z-40 border-b backdrop-blur"
+  style="background: color-mix(in srgb, var(--bg) 88%, transparent); border-color: var(--border);"
+>
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a
+      href={`/${locale}`}
+      class="flex items-center gap-2 font-mono font-bold tracking-tight"
+    >
+      <span
+        class="grid h-8 w-8 place-items-center rounded-md text-sm text-white"
+        style="background: var(--accent);"
+        aria-hidden="true">B</span
+      >
+      <span class="hidden sm:inline">{t.meta.siteTitle.split("—")[0].trim()}</span>
+    </a>
+
+    <div class="flex items-center gap-1">
+      <Nav locale={locale} currentPath={currentPath} />
+      <div class="ml-1 flex items-center gap-1">
+        <LangSwitcher locale={locale} path={langPath} />
+        <ThemeToggle locale={locale} />
+      </div>
+    </div>
+  </div>
+</header>

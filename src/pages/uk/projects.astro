@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/Section.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import ProjectGallery from "@components/ProjectGallery.astro";
+import ContactCTA from "@components/ContactCTA.astro";
+import { useTranslations } from "@i18n/index";
+import { PROJECT, GALLERY_IMAGES, SITE } from "@consts";
+
+const locale = "uk";
+const t = useTranslations(locale);
+const mainShot = GALLERY_IMAGES[0] ?? { src: "", alt: "" };
+---
+
+<BaseLayout locale={locale} path="/projects" title={`${t.projects.title} — ${t.meta.siteTitle}`} description={t.projects.subtitle}>
+  <Section title={t.projects.title} subtitle={t.projects.subtitle}>
+    <ProjectCard
+      title={t.projects.main.title}
+      description={t.projects.main.description}
+      stack={PROJECT.stack}
+      stackLabel={t.projects.stack}
+      liveUrl={PROJECT.liveUrl}
+      repoUrl={PROJECT.repoUrl}
+      viewLiveLabel={t.projects.viewLive}
+      screenshot={mainShot}
+    />
+
+    <div class="mt-10">
+      <ProjectGallery images={GALLERY_IMAGES} title={t.projects.galleryTitle} />
+    </div>
+  </Section>
+
+  <ContactCTA
+    title={t.contact.title}
+    subtitle={t.contact.subtitle}
+    telegram={{ href: SITE.telegram, label: t.contact.telegram }}
+    email={{ href: `mailto:${SITE.email}`, label: t.contact.email }}
+  />
+</BaseLayout>

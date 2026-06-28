@@ -1,0 +1,44 @@
+---
+import Button from "@components/Button.astro";
+
+interface Props {
+  greeting: string;
+  name: string;
+  role: string;
+  tagline: string;
+  ctaPrimary: { href: string; label: string };
+  ctaSecondary: { href: string; label: string };
+}
+
+const { greeting, name, role, tagline, ctaPrimary, ctaSecondary } = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 opacity-60"
+    style="background: radial-gradient(60% 50% at 20% 0%, var(--accent-soft) 0%, transparent 70%);"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="container-page py-20 sm:py-28">
+    <div class="max-w-3xl">
+      <p class="text-subtle font-mono text-sm">{greeting}</p>
+      <h1 class="mt-2 text-4xl font-bold tracking-tight sm:text-6xl">
+        {name}
+      </h1>
+      <p
+        class="mt-3 inline-block rounded-md px-2 py-0.5 font-mono text-lg sm:text-xl"
+        style="color: var(--accent-strong); background: var(--accent-soft);"
+      >
+        {role}
+      </p>
+      <p class="mt-6 text-lg text-muted sm:text-xl">{tagline}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href={ctaPrimary.href} variant="primary">{ctaPrimary.label}</Button>
+        <Button href={ctaSecondary.href} variant="outline">
+          {ctaSecondary.label}
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

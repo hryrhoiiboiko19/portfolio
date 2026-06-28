@@ -1,0 +1,60 @@
+---
+import Card from "@components/Card.astro";
+import StackBadges from "@components/StackBadges.astro";
+import Button from "@components/Button.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  stack: readonly string[];
+  stackLabel: string;
+  liveUrl: string;
+  repoUrl: string;
+  viewLiveLabel: string;
+  screenshot: { src: string; alt: string };
+}
+
+const {
+  title,
+  description,
+  stack,
+  stackLabel,
+  liveUrl,
+  repoUrl,
+  viewLiveLabel,
+  screenshot,
+} = Astro.props;
+---
+
+<Card class="overflow-hidden !p-0">
+  <div class="grid gap-0 lg:grid-cols-2">
+    <a
+      href={screenshot.src}
+      class="group block bg-[var(--bg-muted)] p-3"
+      aria-label={screenshot.alt}
+    >
+      <img
+        src={screenshot.src}
+        alt={screenshot.alt}
+        loading="lazy"
+        decoding="async"
+        class="h-full w-full rounded-lg object-cover transition group-hover:opacity-90"
+        style="border: 1px solid var(--border);"
+      />
+    </a>
+    <div class="flex flex-col gap-4 p-6">
+      <h3 class="text-2xl font-bold tracking-tight">{title}</h3>
+      <p class="text-muted">{description}</p>
+      <div>
+        <p class="mb-2 font-mono text-xs uppercase tracking-wide text-subtle">
+          {stackLabel}
+        </p>
+        <StackBadges items={stack} />
+      </div>
+      <div class="mt-auto flex flex-wrap gap-3 pt-2">
+        <Button href={liveUrl} external variant="primary">{viewLiveLabel}</Button>
+        <Button href={repoUrl} external variant="outline">GitHub</Button>
+      </div>
+    </div>
+  </div>
+</Card>

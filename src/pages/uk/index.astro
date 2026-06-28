@@ -1,0 +1,40 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import Section from "@components/Section.astro";
+import SkillList from "@components/SkillList.astro";
+import ContactCTA from "@components/ContactCTA.astro";
+import { useTranslations } from "@i18n/index";
+import { SITE } from "@consts";
+
+const locale = "uk";
+const t = useTranslations(locale);
+---
+
+<BaseLayout locale={locale} path="/" title={t.meta.siteTitle} description={t.meta.siteDescription}>
+  <Hero
+    greeting={t.hero.greeting}
+    name={t.hero.name}
+    role={t.hero.role}
+    tagline={t.hero.tagline}
+    ctaPrimary={{ href: `/${locale}/projects`, label: t.hero.ctaPrimary }}
+    ctaSecondary={{ href: `#${"contact"}`, label: t.hero.ctaSecondary }}
+  />
+
+  <Section id="about" title={t.about.title}>
+    <p class="text-lg text-muted">{t.about.lead}</p>
+    <p class="mt-4 text-muted">{t.about.body}</p>
+
+    <h3 class="mt-10 mb-4 font-mono text-sm uppercase tracking-wide text-subtle">
+      {t.about.skillsTitle}
+    </h3>
+    <SkillList groups={t.about.skills.map((g) => ({ title: g.title, items: g.items }))} />
+  </Section>
+
+  <ContactCTA
+    title={t.contact.title}
+    subtitle={t.contact.subtitle}
+    telegram={{ href: SITE.telegram, label: t.contact.telegram }}
+    email={{ href: `mailto:${SITE.email}`, label: t.contact.email }}
+  />
+</BaseLayout>

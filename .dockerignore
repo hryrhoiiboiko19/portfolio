@@ -1,0 +1,19 @@
+# Build artifacts
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Misc
+.git/
+.gitignore
+.github
+.env*
+*.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+.editorconfig
+.vscode/
+.idea/

@@ -1,0 +1,23 @@
+---
+import { useTranslations, alternatelocale, type Locale } from "@i18n/index";
+
+interface Props {
+  locale: Locale;
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+const t = useTranslations(locale);
+const other = alternatelocale(locale);
+const targetPath = path === "/" ? "" : path;
+const otherHref = `/${other}${targetPath}`.replace(/\/+$/g, "") || `/${other}`;
+---
+
+<a
+  href={otherHref}
+  class="btn-ghost btn px-2 py-1 text-sm font-semibold"
+  title={t.lang.switchTitle}
+  aria-label={t.lang.switchTitle}
+>
+  {t.lang.switch}
+</a>

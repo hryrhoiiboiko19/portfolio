@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/Section.astro";
+import PriceTable from "@components/PriceTable.astro";
+import ContactCTA from "@components/ContactCTA.astro";
+import { useTranslations } from "@i18n/index";
+import { SITE } from "@consts";
+
+const locale = "uk";
+const t = useTranslations(locale);
+---
+
+<BaseLayout locale={locale} path="/prices" title={`${t.prices.title} — ${t.meta.siteTitle}`} description={t.prices.subtitle}>
+  <Section title={t.prices.title} subtitle={t.prices.subtitle}>
+    <PriceTable
+      rows={[...t.prices.rows].map((r) => ({ module: r.module, description: r.description, price: r.price }))}
+      moduleHeader={t.prices.module}
+      descriptionHeader={t.prices.description}
+      priceHeader={t.prices.price}
+      currency={t.prices.currency}
+    />
+    <p class="mt-6 text-sm text-subtle">{t.prices.subtitle}</p>
+  </Section>
+
+  <ContactCTA
+    title={t.contact.title}
+    subtitle={t.contact.subtitle}
+    telegram={{ href: SITE.telegram, label: t.contact.telegram }}
+    email={{ href: `mailto:${SITE.email}`, label: t.contact.email }}
+  />
+</BaseLayout>

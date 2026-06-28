@@ -1,0 +1,41 @@
+---
+import { NAV, navHref } from "@consts";
+import { useTranslations, type Locale } from "@i18n/index";
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const t = useTranslations(locale);
+
+function isActive(item: (typeof NAV)[number]): boolean {
+  const target = navHref(item, locale).replace(/\/+$/g, "") || `/${locale}`;
+  const current = currentPath.replace(/\/+$/g, "") || `/${locale}`;
+  if (item.href === "") {
+    return current === `/${locale}` || current === `/${locale}/`;
+  }
+  return current.startsWith(target);
+}
+---
+
+<nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+  {
+    NAV.map((item) => {
+      const active = isActive(item);
+      return (
+        <a
+          href={navHref(item, locale)}
+          class={
+            "btn px-3 py-1.5 text-sm " +
+            (active ? "btn-primary" : "btn-ghost")
+          }
+          aria-current={active ? "page" : undefined}
+        >
+          {t.nav[item.key]}
+        </a>
+      );
+    })
+  }
+</nav>

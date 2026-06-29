@@ -1,146 +1,156 @@
 [
   {
-    "id": "basic-bot",
+    "id": "mvp-info-bot",
     "order": 1,
-    "module": {
-      "uk": "Базовий бот (старт)",
-      "en": "Basic bot (starter)"
-    },
+    "category": "base",
+    "module": { "uk": "MVP / Простий інфо-бот", "en": "MVP / Simple info bot" },
     "description": {
-      "uk": "Реєстрація, /start, echo, прості команди, одна мова",
-      "en": "Registration, /start, echo, simple commands, single language"
+      "uk": "Багаторівневе меню, FAQ, збір контактів/лідогенерація, розсилка по базі, збереження юзерів у PostgreSQL, деплой у Docker",
+      "en": "Multi-level menu, FAQ, lead capture, broadcast to user base, PostgreSQL storage, Docker deploy"
     },
-    "price": {
-      "uk": "від 5 000",
-      "en": "from 5 000"
-    }
+    "price": { "uk": "від $300", "en": "from $300" }
   },
   {
-    "id": "intake",
+    "id": "shop-bot",
     "order": 2,
-    "module": {
-      "uk": "Покрокова розмова (intake)",
-      "en": "Step-by-step conversation (intake)"
-    },
+    "category": "base",
+    "module": { "uk": "Бот-магазин / Напів-автоматичні продажі", "en": "Shop bot / Semi-automated sales" },
     "description": {
-      "uk": "Сувора валідація (Zod), retry-prompt, сесії в Redis",
-      "en": "Strict validation (Zod), retry prompts, Redis sessions"
+      "uk": "Каталог товарів/послуг, кошик, оформлення замовлення, WebApp-інтерфейс, сповіщення менеджерів",
+      "en": "Product catalog, cart, checkout, WebApp UI, manager notifications"
     },
-    "price": {
-      "uk": "від 8 000",
-      "en": "from 8 000"
-    }
+    "price": { "uk": "від $600", "en": "from $600" }
+  },
+  {
+    "id": "custom-automation",
+    "order": 3,
+    "category": "base",
+    "module": { "uk": "Кастомна автоматизація (складна бізнес-логіка)", "en": "Custom automation (complex business logic)" },
+    "description": {
+      "uk": "Унікальні механіки: закриті клуби за підпискою, реферальні багаторівневі системи, бронювання часу",
+      "en": "Unique mechanics: subscription clubs, multi-tier referral systems, time booking"
+    },
+    "price": { "uk": "від $1 000", "en": "from $1 000" }
+  },
+  {
+    "id": "crm-integration",
+    "order": 4,
+    "category": "integrations",
+    "module": { "uk": "Інтеграція з CRM (HubSpot / KeyCRM / SendPulse)", "en": "CRM integration (HubSpot / KeyCRM / SendPulse)" },
+    "description": {
+      "uk": "Автоматична передача лідів, статусів замовлень та синхронізація клієнтів",
+      "en": "Automatic lead sync, order status updates, customer synchronization"
+    },
+    "price": { "uk": "від $200", "en": "from $200" }
+  },
+  {
+    "id": "payments-integration",
+    "order": 5,
+    "category": "integrations",
+    "module": { "uk": "Інтеграція платіжних систем (Stripe / WayForPay / LiqPay)", "en": "Payment integration (Stripe / WayForPay / LiqPay)" },
+    "description": {
+      "uk": "Прийом оплат у боті або через WebApp, генерація інвойсів, обробка Webhooks",
+      "en": "In-bot or WebApp payments, invoice generation, webhook handling"
+    },
+    "price": { "uk": "від $150", "en": "from $150" }
+  },
+  {
+    "id": "google-sheets-sync",
+    "order": 6,
+    "category": "integrations",
+    "module": { "uk": "Синхронізація з Google Sheets", "en": "Google Sheets sync" },
+    "description": {
+      "uk": "Швидкий вивантажувач звітів, замовлень або користувачів у таблицю для нетехнічного персоналу",
+      "en": "Quick export of reports, orders or users to a spreadsheet for non-technical staff"
+    },
+    "price": { "uk": "від $100", "en": "from $100" }
+  },
+  {
+    "id": "custom-api",
+    "order": 7,
+    "category": "integrations",
+    "module": { "uk": "Інтеграція з кастомним API замовника", "en": "Custom API integration" },
+    "description": {
+      "uk": "Підключення до стороннього API клієнта. Вартість залежить від якості документації",
+      "en": "Connecting to client's third-party API. Price depends on documentation quality"
+    },
+    "price": { "uk": "від $200", "en": "from $200" }
+  },
+  {
+    "id": "openai-integration",
+    "order": 8,
+    "category": "ai",
+    "module": { "uk": "Інтеграція OpenAI (ChatGPT / Assistants API)", "en": "OpenAI integration (ChatGPT / Assistants API)" },
+    "description": {
+      "uk": "Розумний ШІ-консультант, який відповідає за скриптом, генерація відповідей на основі бази знань компанії",
+      "en": "AI consultant answering by script, generating responses from company knowledge base"
+    },
+    "price": { "uk": "від $200", "en": "from $200" }
+  },
+  {
+    "id": "media-recognition",
+    "order": 9,
+    "category": "ai",
+    "module": { "uk": "Розпізнавання медіа (Голос у текст / OCR)", "en": "Media recognition (Voice-to-text / OCR)" },
+    "description": {
+      "uk": "Транскрибація голосових повідомлень або зчитування даних з фото документів/чеків",
+      "en": "Voice message transcription or data extraction from photos of documents/receipts"
+    },
+    "price": { "uk": "від $150", "en": "from $150" }
   },
   {
     "id": "admin-panel",
-    "order": 3,
-    "module": {
-      "uk": "Адмін-панель",
-      "en": "Admin panel"
-    },
+    "order": 10,
+    "category": "management",
+    "module": { "uk": "Кастомна Адмін-панель (Дашборд)", "en": "Custom Admin panel (Dashboard)" },
     "description": {
-      "uk": "Inline-кнопки, підтвердження, пагінація, broadcast",
-      "en": "Inline buttons, confirmation, pagination, broadcast"
+      "uk": "Веб-інтерфейс для менеджерів: керування контентом, детальна статистика, права доступу без заходу в БД",
+      "en": "Web UI for managers: content management, detailed stats, access control without touching the DB"
     },
-    "price": {
-      "uk": "від 12 000",
-      "en": "from 12 000"
-    }
+    "price": { "uk": "від $400", "en": "from $400" }
   },
   {
-    "id": "analytics",
-    "order": 4,
-    "module": {
-      "uk": "Аналітика та статистика",
-      "en": "Analytics & statistics"
-    },
+    "id": "advanced-analytics",
+    "order": 11,
+    "category": "management",
+    "module": { "uk": "Просунута аналітика дій користувачів", "en": "Advanced user behavior analytics" },
     "description": {
-      "uk": "Конверсія, лічильники статусів, популярні послуги",
-      "en": "Conversion, status counters, popular services"
+      "uk": "Логування кожної кнопки, побудова воронок конверсії, інтеграція з Amplitude/Mixpanel",
+      "en": "Per-button logging, conversion funnels, Amplitude/Mixpanel integration"
     },
-    "price": {
-      "uk": "від 6 000",
-      "en": "from 6 000"
-    }
+    "price": { "uk": "від $100", "en": "from $100" }
   },
   {
-    "id": "google-sheets",
-    "order": 5,
-    "module": {
-      "uk": "Експорт у Google Sheets",
-      "en": "Google Sheets export"
-    },
+    "id": "hosting-monitoring",
+    "order": 12,
+    "category": "maintenance",
+    "module": { "uk": "Хостинг та моніторинг (SLA 99.9%)", "en": "Hosting & monitoring (SLA 99.9%)" },
     "description": {
-      "uk": "Apps Script webhook, авто-допис рядків",
-      "en": "Apps Script webhook, auto-append rows"
+      "uk": "Оренда VPS, Docker-контейнер, логування помилок через Sentry, бекап БД раз на добу",
+      "en": "VPS rental, Docker container, Sentry error logging, daily DB backup"
     },
-    "price": {
-      "uk": "від 3 000",
-      "en": "from 3 000"
-    }
+    "price": { "uk": "від $30/міс", "en": "from $30/mo" }
   },
   {
-    "id": "payments",
-    "order": 6,
-    "module": {
-      "uk": "Інтеграція оплати",
-      "en": "Payment integration"
-    },
+    "id": "tech-support",
+    "order": 13,
+    "category": "maintenance",
+    "module": { "uk": "Техпідтримка + пакет дрібних правок", "en": "Tech support + minor fixes package" },
     "description": {
-      "uk": "LiqPay/Mono або інший еквайринг через webhook",
-      "en": "LiqPay/Mono or other acquirer via webhook"
+      "uk": "До 5-10 годин/міс: заміна текстів, виправлення багів, консультації, стабільність після оновлень Telegram API",
+      "en": "Up to 5-10 hrs/mo: text changes, bug fixes, consultations, stability after Telegram API updates"
     },
-    "price": {
-      "uk": "від 10 000",
-      "en": "from 10 000"
-    }
+    "price": { "uk": "від $150/міс", "en": "from $150/mo" }
   },
   {
-    "id": "queues",
-    "order": 7,
-    "module": {
-      "uk": "Черги та фонові завдання",
-      "en": "Queues & background jobs"
-    },
+    "id": "custom-dev-hourly",
+    "order": 14,
+    "category": "maintenance",
+    "module": { "uk": "Кастомна розробка (понад пакет)", "en": "Custom development (beyond package)" },
     "description": {
-      "uk": "BullMQ + Redis, повторні спроби, instrumentation",
-      "en": "BullMQ + Redis, retries, instrumentation"
+      "uk": "Для прорахунку великих нових тасок, які з'являються в процесі експлуатації",
+      "en": "For scoping large new tasks that arise during operation"
     },
-    "price": {
-      "uk": "від 7 000",
-      "en": "from 7 000"
-    }
-  },
-  {
-    "id": "monitoring",
-    "order": 8,
-    "module": {
-      "uk": "Моніторинг (Prometheus + Grafana)",
-      "en": "Monitoring (Prometheus + Grafana)"
-    },
-    "description": {
-      "uk": "Метрики, /metrics, /healthz, дашборди",
-      "en": "Metrics, /metrics, /healthz, dashboards"
-    },
-    "price": {
-      "uk": "від 8 000",
-      "en": "from 8 000"
-    }
-  },
-  {
-    "id": "docker-cicd",
-    "order": 9,
-    "module": {
-      "uk": "Docker + CI/CD",
-      "en": "Docker + CI/CD"
-    },
-    "description": {
-      "uk": "Compose, GitHub Actions, build & push to GHCR",
-      "en": "Compose, GitHub Actions, build & push to GHCR"
-    },
-    "price": {
-      "uk": "від 6 000",
-      "en": "from 6 000"
-    }
+    "price": { "uk": "від $35/год", "en": "from $35/hr" }
   }
 ]

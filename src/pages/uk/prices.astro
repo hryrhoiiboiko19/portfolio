@@ -4,22 +4,22 @@ import Section from "@components/Section.astro";
 import PriceTable from "@components/PriceTable.astro";
 import ContactCTA from "@components/ContactCTA.astro";
 import { useTranslations } from "@i18n/index";
-import { getServices, resolveService } from "@data/index";
+import { getServicesByCategory } from "@data/index";
 import { SITE } from "@consts";
 
 const locale = "uk" as const;
 const t = useTranslations(locale);
-const rows = getServices().map((s) => resolveService(s, locale));
+const groups = getServicesByCategory(locale);
 ---
 
 <BaseLayout locale={locale} path="/prices" title={`${t.prices.title} — ${t.meta.siteTitle}`} description={t.prices.subtitle}>
   <Section title={t.prices.title} subtitle={t.prices.subtitle}>
     <PriceTable
-      rows={rows}
-      moduleHeader={t.prices.module}
+      groups={groups}
+      categoryLabels={{ ...t.prices.categories }}
+      serviceHeader={t.prices.module}
       descriptionHeader={t.prices.description}
       priceHeader={t.prices.price}
-      currency={t.prices.currency}
     />
     <p class="mt-6 text-sm text-subtle">{t.prices.subtitle}</p>
   </Section>

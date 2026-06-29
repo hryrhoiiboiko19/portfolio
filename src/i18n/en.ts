@@ -63,10 +63,16 @@ export const en: Dict = {
   prices: {
     title: "Pricing",
     subtitle: "Estimates only. Final price depends on logic complexity and integrations.",
-    module: "Module",
+    module: "Service",
     description: "Description",
     price: "Price",
-    currency: "UAH",
+    categories: {
+      base: "Base packages (project start)",
+      integrations: "Integrations & data",
+      ai: "Smart features (AI & Media)",
+      management: "Management & analytics",
+      maintenance: "Maintenance & operations",
+    },
   },
   contact: {
     title: "Ready to discuss your bot?",

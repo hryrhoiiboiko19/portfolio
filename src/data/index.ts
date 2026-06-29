@@ -24,9 +24,17 @@ export interface Project {
   video?: ProjectVideo;
 }
 
+export type ServiceCategory =
+  | "base"
+  | "integrations"
+  | "ai"
+  | "management"
+  | "maintenance";
+
 export interface Service {
   id: string;
   order: number;
+  category: ServiceCategory;
   module: Localized;
   description: Localized;
   price: Localized;
@@ -81,6 +89,7 @@ export function resolveProject(p: Project, locale: Locale): ResolvedProject {
 
 export interface ResolvedService {
   id: string;
+  category: ServiceCategory;
   module: string;
   description: string;
   price: string;
@@ -89,8 +98,28 @@ export interface ResolvedService {
 export function resolveService(s: Service, locale: Locale): ResolvedService {
   return {
     id: s.id,
+    category: s.category,
     module: localized(s.module, locale),
     description: localized(s.description, locale),
     price: localized(s.price, locale),
   };
+}
+
+export const SERVICE_CATEGORIES: ServiceCategory[] = [
+  "base",
+  "integrations",
+  "ai",
+  "management",
+  "maintenance",
+];
+
+export function getServicesByCategory(
+  locale: Locale
+): { category: ServiceCategory; services: ResolvedService[] }[] {
+  return SERVICE_CATEGORIES.map((cat) => ({
+    category: cat,
+    services: getServices()
+      .filter((s) => s.category === cat)
+      .map((s) => resolveService(s, locale)),
+  }));
 }

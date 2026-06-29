@@ -1,52 +1,65 @@
 ---
+import type { ServiceCategory, ResolvedService } from "@data/index";
+
 interface Props {
-  rows: { module: string; description: string; price: string }[];
-  moduleHeader: string;
+  groups: { category: ServiceCategory; services: ResolvedService[] }[];
+  categoryLabels: Record<ServiceCategory, string>;
+  serviceHeader: string;
   descriptionHeader: string;
   priceHeader: string;
-  currency: string;
 }
 
 const {
-  rows,
-  moduleHeader,
+  groups,
+  categoryLabels,
+  serviceHeader,
   descriptionHeader,
   priceHeader,
-  currency,
 } = Astro.props;
 ---
 
-<div class="overflow-hidden rounded-xl border" style="border-color: var(--border);">
-  <table class="w-full border-collapse text-left text-sm">
-    <thead>
-      <tr
-        class="font-mono text-xs uppercase tracking-wide text-subtle"
-        style="background: var(--bg-muted);"
-      >
-        <th class="p-4 font-semibold">{moduleHeader}</th>
-        <th class="hidden p-4 font-semibold sm:table-cell">
-          {descriptionHeader}
-        </th>
-        <th class="p-4 text-right font-semibold">{priceHeader}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        rows.map((row, i) => (
-          <tr class="border-t" style={`border-color: var(--border); background: ${i % 2 === 0 ? "var(--bg-elevated)" : "var(--bg-muted)"};`}>
-            <td class="p-4 font-semibold">{row.module}</td>
-            <td class="hidden p-4 text-muted sm:table-cell">
-              {row.description}
-            </td>
-            <td class="p-4 text-right font-mono whitespace-nowrap">
-              <span class="badge">{row.price}</span>
-              <span class="ml-1 text-xs text-subtle">{currency}</span>
-            </td>
-          </tr>
-        ))
-      }
-    </tbody>
-  </table>
+<div class="space-y-10">
+  {
+    groups.map((group) => (
+      <div>
+        <h3 class="mb-3 text-lg font-bold tracking-tight">
+          {categoryLabels[group.category]}
+        </h3>
+        <div class="overflow-hidden rounded-xl border" style="border-color: var(--border);">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr
+                class="font-mono text-xs uppercase tracking-wide text-subtle"
+                style="background: var(--bg-muted);"
+              >
+                <th class="p-4 font-semibold">{serviceHeader}</th>
+                <th class="hidden p-4 font-semibold sm:table-cell">
+                  {descriptionHeader}
+                </th>
+                <th class="p-4 text-right font-semibold">{priceHeader}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {group.services.map((row, i) => (
+                <tr
+                  class="border-t"
+                  style={`border-color: var(--border); background: ${i % 2 === 0 ? "var(--bg-elevated)" : "var(--bg-muted)"};`}
+                >
+                  <td class="p-4 font-semibold">{row.module}</td>
+                  <td class="hidden p-4 text-muted sm:table-cell">
+                    {row.description}
+                  </td>
+                  <td class="p-4 text-right font-mono whitespace-nowrap">
+                    <span class="badge">{row.price}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ))
+  }
 </div>
 
 <p class="mt-3 text-right text-xs text-subtle sm:hidden">

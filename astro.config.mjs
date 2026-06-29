@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://portfolio.hryhoriiboiko19.workers.dev/",
   output: "static",
   i18n: {
     defaultLocale: "uk",

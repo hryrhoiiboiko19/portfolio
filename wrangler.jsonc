@@ -1,9 +1,0 @@
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "portfolio",
-  "compatibility_date": "2025-01-01",
-  "pages": {
-    "build_command": "npm run build",
-    "build_output_dir": "dist"
-  }
-}

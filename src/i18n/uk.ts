@@ -57,7 +57,6 @@ export const uk = {
     subtitle: "Добірка реалізованих Telegram-ботів для бізнесу.",
     stack: "Технології",
     viewLive: "Подивитись у дії",
-    videoLabel: "Відео-демонстрація",
   },
   prices: {
     title: "Ціни",

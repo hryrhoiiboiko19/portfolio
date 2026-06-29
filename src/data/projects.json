@@ -30,11 +30,6 @@
         "uk": "Відео-демонстрація роботи бота",
         "en": "Video demo of the bot in action"
       }
-    },
-    "mainImage": "/assets/greetings.jpg",
-    "mainImageAlt": {
-      "uk": "Привітальне повідомлення",
-      "en": "Greeting message"
     }
   }
 ]

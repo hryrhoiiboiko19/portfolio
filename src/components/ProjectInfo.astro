@@ -1,0 +1,40 @@
+---
+import Card from "@components/Card.astro";
+import StackBadges from "@components/StackBadges.astro";
+import Button from "@components/Button.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  stack: readonly string[];
+  stackLabel: string;
+  liveUrl: string;
+  repoUrl: string;
+  viewLiveLabel: string;
+}
+
+const {
+  title,
+  description,
+  stack,
+  stackLabel,
+  liveUrl,
+  repoUrl,
+  viewLiveLabel,
+} = Astro.props;
+---
+
+<Card>
+  <h3 class="text-2xl font-bold tracking-tight">{title}</h3>
+  <p class="mt-3 text-muted">{description}</p>
+  <div class="mt-5">
+    <p class="mb-2 font-mono text-xs uppercase tracking-wide text-subtle">
+      {stackLabel}
+    </p>
+    <StackBadges items={stack} />
+  </div>
+  <div class="mt-6 flex flex-wrap gap-3">
+    <Button href={liveUrl} external variant="primary">{viewLiveLabel}</Button>
+    <Button href={repoUrl} external variant="outline">GitHub</Button>
+  </div>
+</Card>

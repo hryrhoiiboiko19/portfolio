@@ -22,8 +22,6 @@ export interface Project {
   liveUrl: string;
   repoUrl: string;
   video?: ProjectVideo;
-  mainImage: string;
-  mainImageAlt: Localized;
 }
 
 export interface Service {
@@ -61,8 +59,6 @@ export interface ResolvedProject {
   liveUrl: string;
   repoUrl: string;
   video?: ResolvedProjectVideo;
-  mainImage: string;
-  mainImageAlt: string;
 }
 
 export function resolveProject(p: Project, locale: Locale): ResolvedProject {
@@ -80,8 +76,6 @@ export function resolveProject(p: Project, locale: Locale): ResolvedProject {
           title: localized(p.video.title, locale),
         }
       : undefined,
-    mainImage: p.mainImage,
-    mainImageAlt: localized(p.mainImageAlt, locale),
   };
 }
 

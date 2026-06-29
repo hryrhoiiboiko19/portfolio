@@ -19,8 +19,8 @@ export interface Project {
   title: Localized;
   description: Localized;
   stack: readonly string[];
-  liveUrl: string;
-  repoUrl: string;
+  liveUrl?: string;
+  repoUrl?: string;
   video?: ProjectVideo;
 }
 
@@ -56,8 +56,8 @@ export interface ResolvedProject {
   title: string;
   description: string;
   stack: readonly string[];
-  liveUrl: string;
-  repoUrl: string;
+  liveUrl?: string;
+  repoUrl?: string;
   video?: ResolvedProjectVideo;
 }
 

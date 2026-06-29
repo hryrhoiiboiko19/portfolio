@@ -1,7 +1,36 @@
 [
   {
-    "id": "crm-bot",
+    "id": "sipbox",
     "order": 1,
+    "title": {
+      "uk": "SipBox — бот доставки напоїв та десертів",
+      "en": "SipBox — drinks & desserts delivery bot"
+    },
+    "description": {
+      "uk": "Telegram-бот для замовлення напоїв та десертів з доставкою прямо до павільйону/кабінету користувача. Працює на стеку grammY + Prisma + PostgreSQL + Cloudinary під рантаймом Bun.\n\nДля користувачів: перегляд меню за категоріями з пагінацією, кошик із зміною кількості, оформлення замовлення з вибором оплати (готівка/карта) та вказанням місця доставки, історія замовлень зі статусами (Очікує → Готується → Готово → Видано / Скасовано), автентифікація через номер телефону.\n\nДля адміністраторів: обробка активних замовлень, керування категоріями та стравами (назва, ціна, фото). SuperAdmin — усе + керування персоналом.",
+      "en": "Telegram bot for ordering drinks and desserts delivered right to the user's pavilion/office. Built on grammY + Prisma + PostgreSQL + Cloudinary running on Bun.\n\nFor users: category-based menu with pagination, cart with quantity controls, checkout with payment choice (cash/card) and delivery location, order history with statuses (Pending → Cooking → Ready → Issued / Cancelled), phone-number authentication.\n\nFor admins: active order processing, category and dish management (name, price, photo). SuperAdmin — everything + staff management."
+    },
+    "stack": [
+      "grammY",
+      "@grammyjs/menu",
+      "Prisma 7",
+      "PostgreSQL",
+      "Cloudinary",
+      "Bun",
+      "i18n",
+      "Docker"
+    ],
+    "video": {
+      "src": "/assets/video.mp4",
+      "title": {
+        "uk": "Відео-демонстрація роботи бота",
+        "en": "Video demo of the bot in action"
+      }
+    }
+  },
+  {
+    "id": "crm-bot",
+    "order": 2,
     "title": {
       "uk": "CRM-бот для сервісного бізнесу",
       "en": "CRM bot for service business"
@@ -23,13 +52,6 @@
       "GitHub Actions"
     ],
     "liveUrl": "https://t.me/your_crm_bot",
-    "repoUrl": "https://github.com/yourusername/telegram-crm-bot",
-    "video": {
-      "src": "/assets/video.mp4",
-      "title": {
-        "uk": "Відео-демонстрація роботи бота",
-        "en": "Video demo of the bot in action"
-      }
-    }
+    "repoUrl": "https://github.com/yourusername/telegram-crm-bot"
   }
 ]

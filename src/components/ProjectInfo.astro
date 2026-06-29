@@ -8,8 +8,8 @@ interface Props {
   description: string;
   stack: readonly string[];
   stackLabel: string;
-  liveUrl: string;
-  repoUrl: string;
+  liveUrl?: string;
+  repoUrl?: string;
   viewLiveLabel: string;
 }
 
@@ -43,7 +43,7 @@ const {
   }
 
   <div class="mt-6 flex flex-wrap gap-3">
-    <Button href={liveUrl} external variant="primary">{viewLiveLabel}</Button>
-    <Button href={repoUrl} external variant="outline">GitHub</Button>
+    {liveUrl && <Button href={liveUrl} external variant="primary">{viewLiveLabel}</Button>}
+    {repoUrl && <Button href={repoUrl} external variant="outline">GitHub</Button>}
   </div>
 </Card>

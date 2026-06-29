@@ -3,9 +3,9 @@ import type { Locale } from "./i18n";
 export const SITE = {
   url: "https://example.com",
   email: "hryhoriiboiko19@gmail.com",
-  telegram: "https://t.me/yourusername",
+  telegram: "https://t.me/+380637057509",
   telegramHandle: "@yourusername",
-  github: "https://github.com/yourusername",
+  github: "https://github.com/hryrhoiiboiko19",
 } as const;
 
 export type NavItem = { href: string; key: "about" | "projects" | "prices" };

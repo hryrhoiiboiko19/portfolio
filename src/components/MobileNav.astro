@@ -1,0 +1,143 @@
+---
+import { NAV, navHref } from "@consts";
+import { useTranslations, type Locale } from "@i18n/index";
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const t = useTranslations(locale);
+
+function isActive(item: (typeof NAV)[number]): boolean {
+  const target = navHref(item, locale).replace(/\/+$/g, "") || `/${locale}`;
+  const current = currentPath.replace(/\/+$/g, "") || `/${locale}`;
+  if (item.href === "") {
+    return current === `/${locale}` || current === `/${locale}/`;
+  }
+  return current.startsWith(target);
+}
+---
+
+<div class="md:hidden">
+  <button
+    type="button"
+    class="btn-ghost btn p-2"
+    aria-label="Toggle menu"
+    aria-expanded="false"
+    aria-controls="mobile-nav"
+    data-menu-toggle
+  >
+    <svg
+      class="h-5 w-5 menu-icon-open"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg
+      class="h-5 w-5 menu-icon-close hidden"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <nav
+    id="mobile-nav"
+    class="mobile-nav hidden"
+    aria-label="Mobile"
+  >
+    {
+      NAV.map((item) => {
+        const active = isActive(item);
+        return (
+          <a
+            href={navHref(item, locale)}
+            class={
+              "block px-4 py-2.5 text-sm font-medium transition-colors " +
+              (active
+                ? "text-[var(--accent)] bg-[var(--accent-soft)]"
+                : "text-muted hover:text-[var(--accent)] hover:bg-[var(--bg-muted)]")
+            }
+            aria-current={active ? "page" : undefined}
+            data-menu-link
+          >
+            {t.nav[item.key]}
+          </a>
+        );
+      })
+    }
+  </nav>
+</div>
+
+<script>
+  (function () {
+    const toggle = document.querySelector("[data-menu-toggle]");
+    const menu = document.getElementById("mobile-nav");
+    if (!toggle || !menu) return;
+    const openIcon = toggle.querySelector(".menu-icon-open");
+    const closeIcon = toggle.querySelector(".menu-icon-close");
+
+    function open() {
+      menu!.classList.remove("hidden");
+      toggle!.setAttribute("aria-expanded", "true");
+      openIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+    }
+    function close() {
+      menu!.classList.add("hidden");
+      toggle!.setAttribute("aria-expanded", "false");
+      openIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+    }
+    function isOpen() {
+      return !menu!.classList.contains("hidden");
+    }
+
+    toggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      isOpen() ? close() : open();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!isOpen()) return;
+      const t = e.target as Element | null;
+      if (t && menu!.contains(t)) return;
+      if (t && toggle!.contains(t)) return;
+      close();
+    });
+
+    menu?.querySelectorAll("[data-menu-link]").forEach((link) => {
+      link.addEventListener("click", () => close());
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isOpen()) close();
+    });
+  })();
+</script>
+
+<style>
+  .mobile-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    box-shadow: var(--shadow);
+    z-index: 50;
+  }
+</style>

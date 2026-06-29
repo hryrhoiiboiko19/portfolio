@@ -1,5 +1,6 @@
 ---
 import Nav from "@components/Nav.astro";
+import MobileNav from "@components/MobileNav.astro";
 import ThemeToggle from "@components/ThemeToggle.astro";
 import LangSwitcher from "@components/LangSwitcher.astro";
 import { useTranslations, type Locale } from "@i18n/index";
@@ -36,6 +37,7 @@ const langPath = currentPath.replace(`/${locale}`, "") || "";
       <div class="ml-1 flex items-center gap-1">
         <LangSwitcher locale={locale} path={langPath} />
         <ThemeToggle locale={locale} />
+        <MobileNav locale={locale} currentPath={currentPath} />
       </div>
     </div>
   </div>

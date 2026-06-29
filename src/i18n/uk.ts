@@ -55,9 +55,9 @@ export const uk = {
   projects: {
     title: "Проєкти",
     subtitle: "Добірка реалізованих Telegram-ботів для бізнесу.",
-    galleryTitle: "Демонстрація роботи бота",
     stack: "Технології",
     viewLive: "Подивитись у дії",
+    videoLabel: "Відео-демонстрація",
   },
   prices: {
     title: "Ціни",

@@ -24,30 +24,17 @@
     ],
     "liveUrl": "https://t.me/your_crm_bot",
     "repoUrl": "https://github.com/yourusername/telegram-crm-bot",
+    "video": {
+      "src": "/assets/video.mp4",
+      "title": {
+        "uk": "Відео-демонстрація роботи бота",
+        "en": "Video demo of the bot in action"
+      }
+    },
     "mainImage": "/assets/greetings.jpg",
     "mainImageAlt": {
       "uk": "Привітальне повідомлення",
       "en": "Greeting message"
-    },
-    "carouselImages": [
-      { "src": "/assets/greetings.jpg", "alt": { "uk": "Привітальне повідомлення", "en": "Greeting message" } },
-      { "src": "/assets/registration.jpg", "alt": { "uk": "Реєстрація", "en": "Registration flow" } },
-      { "src": "/assets/menu.jpg", "alt": { "uk": "Головне меню", "en": "Main menu" } },
-      { "src": "/assets/order_menu.jpg", "alt": { "uk": "Меню замовлення", "en": "Order menu" } },
-      { "src": "/assets/order_buttons.jpg", "alt": { "uk": "Кнопки замовлення", "en": "Order buttons" } },
-      { "src": "/assets/submenu.jpg", "alt": { "uk": "Підменю", "en": "Submenu" } },
-      { "src": "/assets/submenu_pagination.jpg", "alt": { "uk": "Пагінація підменю", "en": "Submenu pagination" } },
-      { "src": "/assets/delievery_menu.jpg", "alt": { "uk": "Меню доставки", "en": "Delivery menu" } },
-      { "src": "/assets/payment_menu.jpg", "alt": { "uk": "Меню оплати", "en": "Payment menu" } },
-      { "src": "/assets/admin_menu_order_list.jpg", "alt": { "uk": "Адмін: список замовлень", "en": "Admin: order list" } },
-      { "src": "/assets/admin_menu_order_received.jpg", "alt": { "uk": "Адмін: замовлення отримано", "en": "Admin: order received" } },
-      { "src": "/assets/admin_menu_order_options.jpg", "alt": { "uk": "Адмін: опції замовлення", "en": "Admin: order options" } },
-      { "src": "/assets/admin_menu_order_approve.jpg", "alt": { "uk": "Адмін: підтвердження замовлення", "en": "Admin: order approve" } },
-      { "src": "/assets/order_approve.jpg", "alt": { "uk": "Підтвердження замовлення", "en": "Order approval" } },
-      { "src": "/assets/admin_menu_order_is_delievered.jpg", "alt": { "uk": "Адмін: замовлення доставлено", "en": "Admin: order delivered" } },
-      { "src": "/assets/superadmin_menu.jpg", "alt": { "uk": "Меню суперадміна", "en": "Superadmin menu" } },
-      { "src": "/assets/super_admin_menu_order_history.jpg", "alt": { "uk": "Суперадмін: історія замовлень", "en": "Superadmin: order history" } },
-      { "src": "/assets/super_admin_menu_order_history_pagination.jpg", "alt": { "uk": "Суперадмін: пагінація історії", "en": "Superadmin: order history pagination" } }
-    ]
+    }
   }
 ]

@@ -57,9 +57,9 @@ export const en: Dict = {
   projects: {
     title: "Projects",
     subtitle: "A selection of Telegram bots I've built for business.",
-    galleryTitle: "Bot in action",
     stack: "Stack",
     viewLive: "See it live",
+    videoLabel: "Video demo",
   },
   prices: {
     title: "Pricing",

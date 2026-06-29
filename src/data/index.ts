@@ -7,9 +7,10 @@ export interface Localized {
   en: string;
 }
 
-export interface CarouselImage {
+export interface ProjectVideo {
   src: string;
-  alt: Localized;
+  poster?: string;
+  title: Localized;
 }
 
 export interface Project {
@@ -20,9 +21,9 @@ export interface Project {
   stack: readonly string[];
   liveUrl: string;
   repoUrl: string;
+  video?: ProjectVideo;
   mainImage: string;
   mainImageAlt: Localized;
-  carouselImages: readonly CarouselImage[];
 }
 
 export interface Service {
@@ -46,6 +47,12 @@ export const getProjects = (): Project[] =>
 export const getServices = (): Service[] =>
   [...SERVICES].sort((a, b) => a.order - b.order);
 
+export interface ResolvedProjectVideo {
+  src: string;
+  poster?: string;
+  title: string;
+}
+
 export interface ResolvedProject {
   id: string;
   title: string;
@@ -53,9 +60,9 @@ export interface ResolvedProject {
   stack: readonly string[];
   liveUrl: string;
   repoUrl: string;
+  video?: ResolvedProjectVideo;
   mainImage: string;
   mainImageAlt: string;
-  carouselImages: { src: string; alt: string }[];
 }
 
 export function resolveProject(p: Project, locale: Locale): ResolvedProject {
@@ -66,12 +73,15 @@ export function resolveProject(p: Project, locale: Locale): ResolvedProject {
     stack: p.stack,
     liveUrl: p.liveUrl,
     repoUrl: p.repoUrl,
+    video: p.video
+      ? {
+          src: p.video.src,
+          poster: p.video.poster,
+          title: localized(p.video.title, locale),
+        }
+      : undefined,
     mainImage: p.mainImage,
     mainImageAlt: localized(p.mainImageAlt, locale),
-    carouselImages: p.carouselImages.map((c) => ({
-      src: c.src,
-      alt: localized(c.alt, locale),
-    })),
   };
 }
 

@@ -2,7 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Section from "@components/Section.astro";
 import ProjectCard from "@components/ProjectCard.astro";
-import ProjectGallery from "@components/ProjectGallery.astro";
+import ProjectVideo from "@components/ProjectVideo.astro";
 import ContactCTA from "@components/ContactCTA.astro";
 import { useTranslations } from "@i18n/index";
 import { getProjects, resolveProject } from "@data/index";
@@ -15,10 +15,10 @@ const projects = getProjects().map((p) => resolveProject(p, locale));
 
 <BaseLayout locale={locale} path="/projects" title={`${t.projects.title} — ${t.meta.siteTitle}`} description={t.projects.subtitle}>
   <Section title={t.projects.title} subtitle={t.projects.subtitle}>
-    <div class="space-y-10">
+    <div class="space-y-8">
       {
         projects.map((p) => (
-          <>
+          <div class="space-y-6">
             <ProjectCard
               title={p.title}
               description={p.description}
@@ -31,12 +31,15 @@ const projects = getProjects().map((p) => resolveProject(p, locale));
               mainImageAlt={p.mainImageAlt}
               groupId={p.id}
             />
-            <ProjectGallery
-              images={p.carouselImages}
-              title={t.projects.galleryTitle}
-              groupId={p.id}
-            />
-          </>
+            {p.video && (
+              <ProjectVideo
+                src={p.video.src}
+                poster={p.video.poster}
+                title={p.video.title}
+                label={t.projects.videoLabel}
+              />
+            )}
+          </div>
         ))
       }
     </div>

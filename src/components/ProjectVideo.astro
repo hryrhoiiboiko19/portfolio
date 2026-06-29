@@ -1,0 +1,39 @@
+---
+interface Props {
+  src: string;
+  poster?: string;
+  title: string;
+  label: string;
+}
+
+const { src, poster, title, label } = Astro.props;
+---
+
+<section
+  class="mx-auto w-full max-w-5xl px-4 pb-4 pt-2 sm:px-6"
+  aria-label={label}
+>
+  <h3 class="mb-4 font-mono text-xs uppercase tracking-wide text-subtle">
+    {label}
+  </h3>
+  <div
+    class="overflow-hidden rounded-xl border bg-[var(--bg-muted)]"
+    style="border-color: var(--border);"
+  >
+    <video
+      class="block w-full"
+      controls
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster={poster}
+      aria-label={title}
+    >
+      <source src={src} type="video/mp4" />
+      <track kind="captions" />
+    </video>
+  </div>
+  <p class="mt-2 text-center text-xs text-subtle">{title}</p>
+</section>

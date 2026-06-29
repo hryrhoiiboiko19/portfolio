@@ -33,6 +33,15 @@ const {
     </p>
     <StackBadges items={stack} />
   </div>
+
+  {
+    Astro.slots.has("media") && (
+      <div class="mt-6">
+        <slot name="media" />
+      </div>
+    )
+  }
+
   <div class="mt-6 flex flex-wrap gap-3">
     <Button href={liveUrl} external variant="primary">{viewLiveLabel}</Button>
     <Button href={repoUrl} external variant="outline">GitHub</Button>

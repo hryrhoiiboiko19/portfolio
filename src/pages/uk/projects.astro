@@ -18,24 +18,24 @@ const projects = getProjects().map((p) => resolveProject(p, locale));
     <div class="space-y-10">
       {
         projects.map((p) => (
-          <div class="space-y-6">
-            <ProjectInfo
-              title={p.title}
-              description={p.description}
-              stack={p.stack}
-              stackLabel={t.projects.stack}
-              liveUrl={p.liveUrl}
-              repoUrl={p.repoUrl}
-              viewLiveLabel={t.projects.viewLive}
-            />
+          <ProjectInfo
+            title={p.title}
+            description={p.description}
+            stack={p.stack}
+            stackLabel={t.projects.stack}
+            liveUrl={p.liveUrl}
+            repoUrl={p.repoUrl}
+            viewLiveLabel={t.projects.viewLive}
+          >
             {p.video && (
               <ProjectVideo
+                slot="media"
                 src={p.video.src}
                 poster={p.video.poster}
                 title={p.video.title}
               />
             )}
-          </div>
+          </ProjectInfo>
         ))
       }
     </div>

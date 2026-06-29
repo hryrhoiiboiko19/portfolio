@@ -2,7 +2,7 @@ import type { Locale } from "./i18n";
 
 export const SITE = {
   url: "https://example.com",
-  email: "you@example.com",
+  email: "hryhoriiboiko19@gmail.com",
   telegram: "https://t.me/yourusername",
   telegramHandle: "@yourusername",
   github: "https://github.com/yourusername",

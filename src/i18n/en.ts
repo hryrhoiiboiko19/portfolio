@@ -2,9 +2,9 @@ import type { Dict } from "./uk";
 
 export const en: Dict = {
   meta: {
-    siteTitle: "Portfolio — Telegram Bot Developer",
+    siteTitle: "Hryhorii Boiko — Developer",
     siteDescription:
-      "I build Telegram bots for business: CRM, order intake, admin panels, Google Sheets integrations, Prometheus monitoring.",
+      "Full-stack developer: Telegram bots, Node.js, Ruby on Rails, React, PostgreSQL, Docker. Solving business problems end-to-end.",
     lang: "en",
   },
   nav: {
@@ -23,34 +23,34 @@ export const en: Dict = {
   },
   hero: {
     greeting: "Hi, I'm",
-    name: "Your Name",
-    role: "Telegram Bot Developer",
+    name: "Hryhorii Boiko",
+    role: "Developer",
     tagline:
-      "I build reliable bots for business — from order intake to admin panels, monitoring and CI/CD.",
+      "Full-stack developer: Telegram bots, Node.js, Ruby on Rails, React. Solving business problems end-to-end — from idea to Dockerized production.",
     ctaPrimary: "View projects",
     ctaSecondary: "Get in touch",
   },
   about: {
     title: "About me",
-    lead: "I'm a developer specialising in Telegram bots for service businesses — from step-by-step order intake to full admin panels with analytics.",
-    body: "My stack: grammY, Node.js, TypeScript, PostgreSQL, Redis, Drizzle ORM, BullMQ, Prometheus/Grafana, Docker and GitHub Actions. I'm a full-stack backend developer building production-grade solutions end-to-end — from prototype to a CI/CD pipeline with monitoring.",
+    lead: "On a first-name basis with computers since childhood. I've always strived for the highest quality self-education. Quick to learn and self-disciplined.",
+    body: "Worked at Nordic Results (informally), solving full-cycle business problems for an American client: one app on Node.js + React + PostgreSQL, another on Ruby on Rails + PostgreSQL. Both applications were Dockerized.\n\nI specialise in Telegram bots for business — from order intake to admin panels, monitoring and CI/CD. Citizenship: Ukraine, 20 years old.",
     skillsTitle: "Technologies I work with",
     skills: [
       {
-        title: "Bots & frameworks",
-        items: ["grammY", "Telegraf", "Node.js 22", "TypeScript"],
+        title: "Backend & frameworks",
+        items: ["Node.js (Bun)", "Ruby on Rails", "TypeScript", "JavaScript"],
       },
       {
-        title: "Data & queues",
-        items: ["PostgreSQL 17", "Drizzle ORM", "Redis 7", "BullMQ"],
+        title: "Telegram bots",
+        items: ["grammY", "Prisma", "Drizzle ORM", "BullMQ"],
+      },
+      {
+        title: "Frontend",
+        items: ["React", "WebApp (Telegram)"],
       },
       {
         title: "Infrastructure",
-        items: ["Docker", "GitHub Actions", "Prometheus", "Grafana"],
-      },
-      {
-        title: "Integrations",
-        items: ["Google Sheets API", "Apps Script", "Webhook / long-polling", "Zod"],
+        items: ["Docker", "PostgreSQL", "Redis", "Linux"],
       },
     ],
   },

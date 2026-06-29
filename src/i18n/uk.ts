@@ -1,8 +1,8 @@
 export const uk = {
   meta: {
-    siteTitle: "Портфоліо — Розробник Telegram-ботів",
+    siteTitle: "Григорій Бойко — Розробник",
     siteDescription:
-      "Розробляю Telegram-ботів для бізнесу: CRM, замовлення, адмін-панелі, інтеграції з Google Sheets, моніторинг Prometheus.",
+      "Full-stack розробник: Telegram-боти, Node.js, Ruby on Rails, React, PostgreSQL, Docker. Вирішую бізнес-задачі повного циклу розробки.",
     lang: "uk",
   },
   nav: {
@@ -21,34 +21,34 @@ export const uk = {
   },
   hero: {
     greeting: "Привіт, я",
-    name: "Твоє Ім'я",
-    role: "Розробник Telegram-ботів",
+    name: "Григорій Бойко",
+    role: "Програміст, розробник",
     tagline:
-      "Створюю надійних ботів для бізнесу — від замовлення до адмін-панелі, моніторингу та CI/CD.",
+      "Full-stack розробник: Telegram-боти, Node.js, Ruby on Rails, React. Вирішую бізнес-задачі повного циклу — від ідеї до Dockerized продакшну.",
     ctaPrimary: "Подивитись проєкти",
     ctaSecondary: "Зв'язатись",
   },
   about: {
     title: "Про мене",
-    lead: "Я — розробник, що спеціалізується на Telegram-ботах для сервісних бізнесів. Відstep-by-step замовлень до повних адмін-панелей з аналітикою.",
-    body: "Мій стек: grammY, Node.js, TypeScript, PostgreSQL, Redis, Drizzle ORM, BullMQ, Prometheus/Grafana, Docker та GitHub Actions. Я favouritefull-stack бекенд-розробник, що будує Production-ready рішення з нуля — від прототипу до CI/CD пайплайну з моніторингом.",
+    lead: "З дитинства з комп'ютерами на «ти». Завжди прагнув і прагну максимально якісної самоосвіти. Здібний до навчання і самодисципліни.",
+    body: "Працював у Nordic Results (неофіційно), де вирішував бізнес-задачі повного циклу розробки додатків американського замовника: один на Node.js + React + PostgreSQL, другий — на Ruby on Rails + PostgreSQL. Обидва додатки були Dockerized.\n\nСпеціалізуюсь на Telegram-ботах для бізнесу: від замовлення до адмін-панелі, моніторингу та CI/CD. Громадянство: Україна, 20 років.",
     skillsTitle: "Технології, з якими працюю",
     skills: [
       {
-        title: "Боти та фреймворки",
-        items: ["grammY", "Telegraf", "Node.js 22", "TypeScript"],
+        title: "Бекенд та фреймворки",
+        items: ["Node.js (Bun)", "Ruby on Rails", "TypeScript", "JavaScript"],
       },
       {
-        title: "Дані та черги",
-        items: ["PostgreSQL 17", "Drizzle ORM", "Redis 7", "BullMQ"],
+        title: "Telegram-боти",
+        items: ["grammY", "Prisma", "Drizzle ORM", "BullMQ"],
+      },
+      {
+        title: "Фронтенд",
+        items: ["React", "WebApp (Telegram)"],
       },
       {
         title: "Інфраструктура",
-        items: ["Docker", "GitHub Actions", "Prometheus", "Grafana"],
-      },
-      {
-        title: "Інтеграції",
-        items: ["Google Sheets API", "Apps Script", "Webhook / long-polling", "Zod"],
+        items: ["Docker", "PostgreSQL", "Redis", "Linux"],
       },
     ],
   },

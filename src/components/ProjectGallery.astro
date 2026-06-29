@@ -2,9 +2,10 @@
 interface Props {
   images: readonly { src: string; alt: string }[];
   title?: string;
+  groupId: string;
 }
 
-const { images, title } = Astro.props;
+const { images, title, groupId } = Astro.props;
 ---
 
 <div class="card overflow-hidden !p-0">
@@ -45,14 +46,24 @@ const { images, title } = Astro.props;
     {
       images.map((img) => (
         <figure class="snap-start shrink-0 basis-[82%] sm:basis-[60%] lg:basis-[42%]">
-          <img
-            src={img.src}
-            alt={img.alt}
-            loading="lazy"
-            decoding="async"
-            class="w-full rounded-lg object-cover"
-            style="border: 1px solid var(--border);"
-          />
+          <button
+            type="button"
+            class="group block w-full"
+            aria-label={img.alt}
+            data-lightbox
+            data-lightbox-src={img.src}
+            data-lightbox-alt={img.alt}
+            data-lightbox-group={groupId}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              decoding="async"
+              class="w-full rounded-lg object-cover transition group-hover:opacity-90 cursor-zoom-in"
+              style="border: 1px solid var(--border);"
+            />
+          </button>
           <figcaption class="mt-2 px-1 text-center text-xs text-subtle">
             {img.alt}
           </figcaption>
@@ -70,8 +81,8 @@ const { images, title } = Astro.props;
         if (strip.dataset.initialized) return;
         strip.dataset.initialized = "true";
         const root = strip.closest(".card, .overflow-hidden") ?? strip;
-        const prev = root.querySelector("[data-carousel-prev]");
-        const next = root.querySelector("[data-carousel-next]");
+        const prev = root.querySelector<HTMLButtonElement>("[data-carousel-prev]");
+        const next = root.querySelector<HTMLButtonElement>("[data-carousel-next]");
         const step = () => Math.max(strip.clientWidth * 0.8, 160);
         prev?.addEventListener("click", () =>
           strip.scrollBy({ left: -step(), behavior: "smooth" })

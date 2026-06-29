@@ -10,6 +10,8 @@
       "@layouts/*": ["src/layouts/*"],
       "@i18n": ["src/i18n/index"],
       "@i18n/*": ["src/i18n/*"],
+      "@data": ["src/data/index"],
+      "@data/*": ["src/data/*"],
       "@styles": ["src/styles"],
       "@styles/*": ["src/styles/*"],
       "@consts": ["src/consts"]

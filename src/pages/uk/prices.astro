@@ -4,16 +4,18 @@ import Section from "@components/Section.astro";
 import PriceTable from "@components/PriceTable.astro";
 import ContactCTA from "@components/ContactCTA.astro";
 import { useTranslations } from "@i18n/index";
+import { getServices, resolveService } from "@data/index";
 import { SITE } from "@consts";
 
-const locale = "uk";
+const locale = "uk" as const;
 const t = useTranslations(locale);
+const rows = getServices().map((s) => resolveService(s, locale));
 ---
 
 <BaseLayout locale={locale} path="/prices" title={`${t.prices.title} — ${t.meta.siteTitle}`} description={t.prices.subtitle}>
   <Section title={t.prices.title} subtitle={t.prices.subtitle}>
     <PriceTable
-      rows={[...t.prices.rows].map((r) => ({ module: r.module, description: r.description, price: r.price }))}
+      rows={rows}
       moduleHeader={t.prices.module}
       descriptionHeader={t.prices.description}
       priceHeader={t.prices.price}

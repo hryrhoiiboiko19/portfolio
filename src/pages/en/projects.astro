@@ -5,28 +5,40 @@ import ProjectCard from "@components/ProjectCard.astro";
 import ProjectGallery from "@components/ProjectGallery.astro";
 import ContactCTA from "@components/ContactCTA.astro";
 import { useTranslations } from "@i18n/index";
-import { PROJECT, GALLERY_IMAGES, SITE } from "@consts";
+import { getProjects, resolveProject } from "@data/index";
+import { SITE } from "@consts";
 
-const locale = "en";
+const locale = "en" as const;
 const t = useTranslations(locale);
-const mainShot = GALLERY_IMAGES[0] ?? { src: "", alt: "" };
+const projects = getProjects().map((p) => resolveProject(p, locale));
 ---
 
 <BaseLayout locale={locale} path="/projects" title={`${t.projects.title} — ${t.meta.siteTitle}`} description={t.projects.subtitle}>
   <Section title={t.projects.title} subtitle={t.projects.subtitle}>
-    <ProjectCard
-      title={t.projects.main.title}
-      description={t.projects.main.description}
-      stack={PROJECT.stack}
-      stackLabel={t.projects.stack}
-      liveUrl={PROJECT.liveUrl}
-      repoUrl={PROJECT.repoUrl}
-      viewLiveLabel={t.projects.viewLive}
-      screenshot={mainShot}
-    />
-
-    <div class="mt-10">
-      <ProjectGallery images={GALLERY_IMAGES} title={t.projects.galleryTitle} />
+    <div class="space-y-10">
+      {
+        projects.map((p) => (
+          <>
+            <ProjectCard
+              title={p.title}
+              description={p.description}
+              stack={p.stack}
+              stackLabel={t.projects.stack}
+              liveUrl={p.liveUrl}
+              repoUrl={p.repoUrl}
+              viewLiveLabel={t.projects.viewLive}
+              mainImage={p.mainImage}
+              mainImageAlt={p.mainImageAlt}
+              groupId={p.id}
+            />
+            <ProjectGallery
+              images={p.carouselImages}
+              title={t.projects.galleryTitle}
+              groupId={p.id}
+            />
+          </>
+        ))
+      }
     </div>
   </Section>
 

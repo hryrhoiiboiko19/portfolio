@@ -58,11 +58,6 @@ export const uk = {
     galleryTitle: "Демонстрація роботи бота",
     stack: "Технології",
     viewLive: "Подивитись у дії",
-    main: {
-      title: "CRM-бот для сервісного бізнесу",
-      description:
-        "Повноцінний CRM-бот для прийому замовлень через покрокову розмову: реєстрація користувачів,validated intake, адмін-панель із inline-кнопками, аналітика, broadcast і експорт у Google Sheets. Постачається з Prometheus-метриками, BullMQ-чергою, Docker Compose та CI/CD.",
-    },
   },
   prices: {
     title: "Ціни",
@@ -71,53 +66,6 @@ export const uk = {
     description: "Опис",
     price: "Ціна",
     currency: "грн",
-    rows: [
-      {
-        module: "Базовий бот (старт)",
-        description: "Реєстрація, /start, echo, прості команди, одна мова",
-        price: "від 5 000",
-      },
-      {
-        module: "Покрокова розмова (intake)",
-        description: "Гібка валідація (Zod), retry-prompt, сесії в Redis",
-        price: "від 8 000",
-      },
-      {
-        module: "Адмін-панель",
-        description: "Inline-кнопки, підтвердження, пагінація, broadcast",
-        price: "від 12 000",
-      },
-      {
-        module: "Аналітика та статистика",
-        description: "Конверсія, лічильники статусів, популярні послуги",
-        price: "від 6 000",
-      },
-      {
-        module: "Експорт у Google Sheets",
-        description: "Apps Script webhook, авто-допис рядків",
-        price: "від 3 000",
-      },
-      {
-        module: "Інтеграція оплати",
-        description: "LiqPay/Mono або інший еквайринг через webhook",
-        price: "від 10 000",
-      },
-      {
-        module: "Черги та фонові завдання",
-        description: "BullMQ + Redis, повторні спроби, instrumentation",
-        price: "від 7 000",
-      },
-      {
-        module: "Моніторинг (Prometheus + Grafana)",
-        description: "Метрики, /metrics, /healthz, дашборди",
-        price: "від 8 000",
-      },
-      {
-        module: "Docker + CI/CD",
-        description: "Compose, GitHub Actions, build & push to GHCR",
-        price: "від 6 000",
-      },
-    ],
   },
   contact: {
     title: "Готові обговорити вашого бота?",

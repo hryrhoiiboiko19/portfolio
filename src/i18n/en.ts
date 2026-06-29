@@ -60,11 +60,6 @@ export const en: Dict = {
     galleryTitle: "Bot in action",
     stack: "Stack",
     viewLive: "See it live",
-    main: {
-      title: "CRM bot for service business",
-      description:
-        "A full-blown CRM bot for order intake through step-by-step conversations: user registration, validated intake, admin panel with inline buttons, analytics, broadcast and Google Sheets export. Ships with Prometheus metrics, BullMQ queue, Docker Compose and CI/CD.",
-    },
   },
   prices: {
     title: "Pricing",
@@ -73,53 +68,6 @@ export const en: Dict = {
     description: "Description",
     price: "Price",
     currency: "UAH",
-    rows: [
-      {
-        module: "Basic bot (starter)",
-        description: "Registration, /start, echo, simple commands, single language",
-        price: "from 5 000",
-      },
-      {
-        module: "Step-by-step conversation (intake)",
-        description: "Strict validation (Zod), retry prompts, Redis sessions",
-        price: "from 8 000",
-      },
-      {
-        module: "Admin panel",
-        description: "Inline buttons, confirmation, pagination, broadcast",
-        price: "from 12 000",
-      },
-      {
-        module: "Analytics & statistics",
-        description: "Conversion, status counters, popular services",
-        price: "from 6 000",
-      },
-      {
-        module: "Google Sheets export",
-        description: "Apps Script webhook, auto-append rows",
-        price: "from 3 000",
-      },
-      {
-        module: "Payment integration",
-        description: "LiqPay/Mono or other acquirer via webhook",
-        price: "from 10 000",
-      },
-      {
-        module: "Queues & background jobs",
-        description: "BullMQ + Redis, retries, instrumentation",
-        price: "from 7 000",
-      },
-      {
-        module: "Monitoring (Prometheus + Grafana)",
-        description: "Metrics, /metrics, /healthz, dashboards",
-        price: "from 8 000",
-      },
-      {
-        module: "Docker + CI/CD",
-        description: "Compose, GitHub Actions, build & push to GHCR",
-        price: "from 6 000",
-      },
-    ],
   },
   contact: {
     title: "Ready to discuss your bot?",

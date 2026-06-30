@@ -1,22 +1,53 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@components": ["src/components"],
-      "@components/*": ["src/components/*"],
-      "@layouts": ["src/layouts"],
-      "@layouts/*": ["src/layouts/*"],
-      "@i18n": ["src/i18n/index"],
-      "@i18n/*": ["src/i18n/*"],
-      "@data": ["src/data/index"],
-      "@data/*": ["src/data/*"],
-      "@styles": ["src/styles"],
-      "@styles/*": ["src/styles/*"],
-      "@consts": ["src/consts"]
-    }
-  },
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist", "node_modules"]
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [
+				"src/*"
+			],
+			"@components": [
+				"src/components"
+			],
+			"@components/*": [
+				"src/components/*"
+			],
+			"@layouts": [
+				"src/layouts"
+			],
+			"@layouts/*": [
+				"src/layouts/*"
+			],
+			"@i18n": [
+				"src/i18n/index"
+			],
+			"@i18n/*": [
+				"src/i18n/*"
+			],
+			"@data": [
+				"src/data/index"
+			],
+			"@data/*": [
+				"src/data/*"
+			],
+			"@styles": [
+				"src/styles"
+			],
+			"@styles/*": [
+				"src/styles/*"
+			],
+			"@consts": [
+				"src/consts"
+			]
+		}
+	},
+	"include": [
+		".astro/types.d.ts",
+		"**/*",
+		"./worker-configuration.d.ts"
+	],
+	"exclude": [
+		"dist",
+		"node_modules"
+	]
 }
